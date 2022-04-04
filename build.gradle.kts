@@ -70,13 +70,14 @@ project(":repository") {
     }
 
     dependencies {
-        implementation(project(":domain"))
+        api(project(":domain"))
 
-        implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+        api("org.springframework.boot:spring-boot-starter-data-jpa")
 
         implementation("org.jetbrains.kotlin:kotlin-reflect")
 
-        runtimeOnly("mysql:mysql-connector-java")
+        //runtimeOnly("mysql:mysql-connector-java")
+        runtimeOnly("com.h2database:h2")
 
         testImplementation("org.springframework.boot:spring-boot-starter-test")
     }
@@ -88,8 +89,8 @@ project(":api") {
     apply(plugin = "org.jetbrains.kotlin.plugin.spring")
 
     dependencies {
-        implementation(project(":repository"))
-        implementation(project(":domain"))
+        api(project(":repository"))
+
 
         implementation("org.springframework.boot:spring-boot-starter-web")
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")

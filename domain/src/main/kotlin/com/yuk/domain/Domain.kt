@@ -1,3 +1,8 @@
 package com.yuk.domain
 
-class Domain {}
+open class Domain(
+
+) {
+    open var id: Long = 0
+        protected set
+}

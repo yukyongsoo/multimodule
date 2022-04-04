@@ -1,7 +1,12 @@
 package com.yuk.repository
 
-class DomainEntity {
-    fun a () {
+import com.yuk.domain.Domain
+import javax.persistence.Entity
+import javax.persistence.Id
 
-    }
+@Entity
+class DomainEntity: Domain() {
+    @Id
+    override var id: Long = 0
+        protected set
 }

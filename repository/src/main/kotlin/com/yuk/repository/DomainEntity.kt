@@ -10,5 +10,4 @@ import javax.persistence.Table
 class DomainEntity: Domain() {
     @Id
     override var id: Long = 0
-        protected set
 }

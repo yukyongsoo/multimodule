@@ -6,11 +6,7 @@ import org.springframework.boot.runApplication
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import org.springframework.data.repository.query.QueryLookupStrategy
 
-@SpringBootApplication(
-        scanBasePackages = ["com.yuk"]
-)
-@EntityScan(basePackages = ["com.yuk.repository"])
-@EnableJpaRepositories(basePackages = ["com.yuk.repository"])
+@SpringBootApplication
 class ApiApplication
 
 fun main(args: Array<String>) {

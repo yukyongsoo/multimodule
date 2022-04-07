@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 import org.springframework.stereotype.Service
 
-interface DomainRepository : JpaRepository<DomainEntity, Long>
+internal interface DomainRepository : JpaRepository<DomainEntity, Long>
 
 @Service
-class DomainQueryDslRepository(
+internal class DomainQueryDslRepository(
     private val domainRepository: DomainRepository
 ) : Domains, QuerydslRepositorySupport(DomainEntity::class.java) {
     override fun all(): List<Domain> {

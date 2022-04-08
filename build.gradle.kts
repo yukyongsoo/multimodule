@@ -82,6 +82,8 @@ project(":repository") {
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("com.querydsl:querydsl-jpa:5.0.0")
 
+        //https://github.com/vladmihalcea/hibernate-types
+        implementation("com.vladmihalcea:hibernate-types-55:2.15.1")
 
         //runtimeOnly("mysql:mysql-connector-java")
         runtimeOnly("com.h2database:h2")
@@ -130,6 +132,11 @@ project(":api") {
 
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
         implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+
+        implementation("org.springdoc:springdoc-openapi-kotlin:1.6.7")
+        implementation("org.springdoc:springdoc-openapi-ui:1.6.7")
+
+        testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
 
         testImplementation("org.springframework.boot:spring-boot-starter-test")  {
             exclude(group = "org.junit.vintage", module = "junit-vintage-engine")

@@ -4,3 +4,12 @@ spring:
     hibernate:
       ddl-auto: create-drop
     show-sql: true
+  output:
+    ansi:
+      enabled: always
+
+server:
+  error:
+    include-exception: true
+    include-stacktrace: always
+    whitelabel.enabled: true

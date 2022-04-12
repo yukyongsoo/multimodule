@@ -16,6 +16,6 @@ abstract class Book(
     }
 }
 
-class BookId(
-    protected val id: Long = 0
+open class BookId(
+    protected open val id: Long = 0
 )

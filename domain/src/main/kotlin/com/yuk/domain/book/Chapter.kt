@@ -22,6 +22,6 @@ open class Chapter(
     }
 }
 
-class ChapterId(
-    protected val id: Long = 0
+open class ChapterId(
+    protected open val id: Long = 0
 )

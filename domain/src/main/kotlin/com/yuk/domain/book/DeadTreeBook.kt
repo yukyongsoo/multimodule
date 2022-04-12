@@ -1,3 +1,5 @@
 package com.yuk.domain.book
 
-class DeadTreeBook: Book() {}
+class DeadTreeBook(
+    id: BookId
+) : Book(id)

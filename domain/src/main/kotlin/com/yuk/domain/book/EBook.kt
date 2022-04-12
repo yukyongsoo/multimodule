@@ -1,3 +1,5 @@
 package com.yuk.domain.book
 
-class EBook: Book() {}
+class EBook(
+    id: BookId
+) : Book(id)

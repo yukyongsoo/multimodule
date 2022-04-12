@@ -1,3 +1,3 @@
 package com.yuk.domain
 
-class DomainTest {}
+class DomainTest

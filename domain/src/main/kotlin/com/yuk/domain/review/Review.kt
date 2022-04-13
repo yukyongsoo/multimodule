@@ -3,11 +3,11 @@ package com.yuk.domain.review
 import com.yuk.domain.book.Chapter
 
 class Review(
-    open val id: ReviewId
+    open val chapter: Chapter
 ) {
+    open var id: ReviewId = ReviewId()
+
     open val comments = mutableListOf<Comment>()
-    open lateinit var chapter: Chapter
-        protected set
 
     var approval = false
         private set
@@ -26,5 +26,5 @@ class Review(
 }
 
 class ReviewId(
-    open val id: Long
+    open val id: Long = 0
 )

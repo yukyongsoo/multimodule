@@ -1,10 +1,7 @@
 package com.yuk.api.book
 
 import com.yuk.domain.book.Book
-import com.yuk.domain.book.BookId
-import com.yuk.domain.book.Books
-import com.yuk.domain.publishing.ProductId
-import com.yuk.domain.publishing.Products
+import com.yuk.domain.purchase.ProductId
 import com.yuk.domain.purchase.CustomerId
 import com.yuk.domain.purchase.Customers
 import org.springframework.stereotype.Service

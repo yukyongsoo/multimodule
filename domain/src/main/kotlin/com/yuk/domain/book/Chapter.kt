@@ -1,24 +1,17 @@
 package com.yuk.domain.book
 
-import com.yuk.domain.review.Review
-
 open class Chapter(
-    open val bookId: BookId,
-    open val authorId: AuthorId,
     open val content: Content,
+    open val author: Author
 ) {
-    open lateinit var id: ChapterId
+    open val id: ChapterId = ChapterId()
+
+    open var book: Book? = null
+        get() = field ?: throw IllegalAccessException("chapter is not bind to book")
         protected set
 
-    open lateinit var book: Book
-        protected set
-
-    open lateinit var author: Author
-        protected set
-    open val reviews = mutableListOf<Review>()
-
-    fun addReview(review: Review) {
-        reviews.add(review)
+    fun publish(book: Book) {
+        this.book = book
     }
 }
 

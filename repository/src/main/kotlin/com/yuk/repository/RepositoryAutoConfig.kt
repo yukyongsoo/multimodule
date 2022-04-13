@@ -9,4 +9,4 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 @EntityScan
 @EnableJpaRepositories
 @ComponentScan
-class DomainRepositoryAutoConfig
+class RepositoryAutoConfig

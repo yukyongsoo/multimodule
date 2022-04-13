@@ -1,10 +1,17 @@
 package com.yuk.domain.book
 
-abstract class Book(
-    open val id: BookId
-) {
-    open val chapters = mutableListOf<Chapter>()
+import com.yuk.domain.purchase.Product
+
+abstract class Book{
+    open val id: BookId = BookId()
+
+    open val chapters: MutableList<Chapter> = mutableListOf()
+
     open var beta = true
+        protected set
+
+    open var product: Product? = null
+        get() = field ?: throw IllegalAccessException("book not sale")
         protected set
 
     fun addChapter(chapter: Chapter) {
@@ -13,6 +20,10 @@ abstract class Book(
 
     fun setOfficial() {
         beta = false
+    }
+
+    fun publish(product: Product) {
+        this.product = product
     }
 }
 

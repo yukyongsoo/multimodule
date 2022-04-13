@@ -1,21 +1,23 @@
 package com.yuk.domain.purchase
 
 import com.yuk.domain.book.Book
-import com.yuk.domain.publishing.Product
-import com.yuk.domain.publishing.ProductId
 
 
-class Customer(
-    protected val id: CustomerId
-) {
-    private val purchaseList = mutableListOf<Product>()
+class Customer{
+    open var id: CustomerId = CustomerId()
+        protected set
+
+    open val purchaseList = mutableListOf<PurchasedProduct>()
 
     fun buyBook(product: Product) {
-        purchaseList.add(product)
+        purchaseList.add(PurchasedProduct(product, this))
     }
 
-    fun readBook(productId: ProductId): Book {
-        return purchaseList.find { it.id == productId }?.book ?: throw IllegalStateException("you not have book")
+    fun readBook(product: Product): Book {
+        val purchasedProduct
+            = purchaseList.find { it.product.id == product.id } ?: throw IllegalStateException("you not have book")
+
+        return purchasedProduct.product.book
     }
 }
 

@@ -3,8 +3,7 @@ package com.yuk.api.publishing
 import com.yuk.domain.book.BookId
 import com.yuk.domain.book.Books
 import com.yuk.domain.book.Chapter
-import com.yuk.domain.publishing.Product
-import com.yuk.domain.publishing.Products
+import com.yuk.domain.purchase.Product
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

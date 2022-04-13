@@ -1,7 +1,6 @@
 package com.yuk.api.purchase
 
-import com.yuk.domain.publishing.ProductId
-import com.yuk.domain.publishing.Products
+import com.yuk.domain.purchase.ProductId
 import com.yuk.domain.purchase.CustomerId
 import com.yuk.domain.purchase.Customers
 import org.springframework.stereotype.Service

@@ -1,6 +1,8 @@
 package com.yuk.repository.book
 
+import com.yuk.domain.book.Author
 import com.yuk.domain.book.AuthorId
+import com.yuk.domain.book.Book
 import com.yuk.domain.book.BookId
 import com.yuk.domain.book.Chapter
 import com.yuk.domain.book.ChapterId
@@ -10,6 +12,9 @@ import javax.persistence.Column
 import javax.persistence.Embeddable
 import javax.persistence.Embedded
 import javax.persistence.EmbeddedId
+import javax.persistence.Entity
+import javax.persistence.FetchType
+import javax.persistence.ManyToOne
 
 @Embeddable
 class ChapterIdEntity: ChapterId(), Serializable {
@@ -22,31 +27,21 @@ class ChapterIdEntity: ChapterId(), Serializable {
 }
 
 @Embeddable
-class AuthorIdColumn: AuthorId(), Serializable {
+class ContentEntity(
     @Column
-    override var id: Long = 0
+    override val content: String
+): Content(content)
 
-    companion object {
-        private const val serialVersionUID = -383114207597953779L
-    }
-}
-
-@Embeddable
-
+@Entity
 class ChapterEntity(
     @Embedded
-    override val authorId: AuthorIdColumn,
-    @Embeddable
-    override val bookId: BookId,
-    @Embeddable
-    override val content: Content
-): Chapter(bookId, authorId, content) {
+    override val content: Content,
+    @Embedded
+    override val author: Author
+): Chapter(content, author) {
     @EmbeddedId
-    override id: ChapterIdEntity
+    override val id: ChapterIdEntity = ChapterIdEntity()
 
-
-}
-
-
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    override var book: Book?
 }

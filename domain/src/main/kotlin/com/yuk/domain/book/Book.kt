@@ -1,21 +1,38 @@
 package com.yuk.domain.book
 
 import com.yuk.domain.purchase.Product
+import java.io.Serializable
+import javax.persistence.Column
+import javax.persistence.DiscriminatorColumn
+import javax.persistence.Embeddable
+import javax.persistence.EmbeddedId
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.OneToMany
+import javax.persistence.OneToOne
 
-abstract class Book{
-    open val id: BookId = BookId()
+@Entity
+@DiscriminatorColumn(name = "type", columnDefinition = "TINYINT")
+abstract class Book {
+    @EmbeddedId
+    val id = BookId()
 
-    open val chapters: MutableList<Chapter> = mutableListOf()
-
-    open var beta = true
+    @Column(nullable = false)
+    var beta = true
         protected set
 
-    open var product: Product? = null
+    @OneToMany(mappedBy = "book")
+    val chapters = mutableListOf<Chapter>()
+
+    @OneToOne(optional = true, mappedBy = "book")
+    var product: Product? = null
         get() = field ?: throw IllegalAccessException("book not sale")
         protected set
 
     fun addChapter(chapter: Chapter) {
         chapters.add(chapter)
+        chapter.publish(this)
     }
 
     fun setOfficial() {
@@ -27,6 +44,28 @@ abstract class Book{
     }
 }
 
-open class BookId(
-    protected open val id: Long = 0
-)
+@Embeddable
+class BookId(
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long = 0
+) : Serializable {
+    companion object {
+        private const val serialVersionUID = 132908243487197476L
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as BookId
+
+        if (id != other.id) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return id.hashCode()
+    }
+}

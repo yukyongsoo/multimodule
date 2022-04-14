@@ -1,6 +1,5 @@
 package com.yuk.api.review
 
-import com.yuk.domain.book.ChapterId
 import com.yuk.domain.review.Review
 import com.yuk.domain.review.ReviewId
 import com.yuk.domain.review.Reviews
@@ -12,10 +11,6 @@ import org.springframework.transaction.annotation.Transactional
 class ReviewService(
     private val reviews: Reviews
 ) {
-    fun getReviews(chapterId: ChapterId): List<Review> {
-        return reviews.findAllByChapterId(chapterId)
-    }
-
     fun addReview(review: Review) {
         reviews.addReview(review)
     }

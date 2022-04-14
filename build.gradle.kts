@@ -59,7 +59,26 @@ tasks.withType<Wrapper> {
     gradleVersion = "7.4.2"
 }
 
-project(":domain")
+project(":domain") {
+    apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
+    apply(plugin = "org.jetbrains.kotlin.plugin.allopen")
+
+    allOpen {
+        annotation("javax.persistence.Entity")
+        annotation("javax.persistence.MappedSuperclass")
+        annotation("javax.persistence.Embeddable")
+    }
+
+    dependencies {
+        //https://github.com/vladmihalcea/hibernate-types
+        implementation("com.vladmihalcea:hibernate-types-55:2.15.1") {
+            exclude(group = "com.fasterxml.jackson.module")
+        }
+
+        implementation("org.springframework.boot:spring-boot-autoconfigure:2.6.6")
+        implementation("jakarta.persistence:jakarta.persistence-api:2.2.3")
+    }
+}
 
 project(":repository") {
     apply(plugin = "org.springframework.boot")
@@ -67,12 +86,6 @@ project(":repository") {
     apply(plugin = "org.jetbrains.kotlin.plugin.spring")
     apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
     apply(plugin = "org.jetbrains.kotlin.kapt")
-
-    allOpen {
-        annotation("javax.persistence.Entity")
-        annotation("javax.persistence.MappedSuperclass")
-        annotation("javax.persistence.Embeddable")
-    }
 
     dependencies {
         api(project(":domain"))
@@ -83,9 +96,6 @@ project(":repository") {
 
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("com.querydsl:querydsl-jpa:5.0.0")
-
-        //https://github.com/vladmihalcea/hibernate-types
-        implementation("com.vladmihalcea:hibernate-types-55:2.15.1")
 
         //runtimeOnly("mysql:mysql-connector-java")
         runtimeOnly("com.h2database:h2")
@@ -100,7 +110,6 @@ project(":repository") {
     tasks.getByName("bootJar") {
         enabled = false
     }
-
 
     idea {
         module {

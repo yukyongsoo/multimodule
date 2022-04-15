@@ -1,7 +1,6 @@
 package com.yuk.repository.book
 
 import com.yuk.domain.book.Chapter
-import com.yuk.domain.book.ChapterId
 import com.yuk.domain.book.Chapters
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Service
@@ -15,4 +14,4 @@ internal class ChapterRepository(
     }
 }
 
-internal interface ChapterJpaRepository : JpaRepository<Chapter, ChapterId>
+internal interface ChapterJpaRepository : JpaRepository<Chapter, Long>

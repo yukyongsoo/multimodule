@@ -24,4 +24,4 @@ internal class ProductRepository(
     }
 }
 
-internal interface ProductJpaRepository : JpaRepository<Product, ProductId>
+internal interface ProductJpaRepository : JpaRepository<Product, Long>

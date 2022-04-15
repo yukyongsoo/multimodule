@@ -19,4 +19,4 @@ internal class BookRepository(
     }
 }
 
-internal interface BookJpaRepository : JpaRepository<Book, BookId>
+internal interface BookJpaRepository : JpaRepository<Book, Long>

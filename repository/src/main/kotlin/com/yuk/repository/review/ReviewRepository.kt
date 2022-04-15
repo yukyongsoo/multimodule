@@ -26,4 +26,4 @@ internal class ReviewRepository : Reviews {
     }
 }
 
-internal interface ReviewJpaRepository : JpaRepository<Review, ReviewId>
+internal interface ReviewJpaRepository : JpaRepository<Review, Long>

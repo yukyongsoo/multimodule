@@ -6,27 +6,17 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-class Author(
-    authorId: AuthorId
-) {
-    @Transient
-    final var authorId = authorId
-        private set(value) {
-            id = value.id
-            field = value
-        }
+class Author {
+    @delegate:Transient
+    val authorId by lazy {
+        AuthorId(id)
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private var id: Long? = null
-        set(value) {
-            value?.let {
-                authorId = AuthorId(it)
-            }
-            field = value
-        }
+    private val id: Long = 0
 }
 
 class AuthorId(
-    val id: Long = 0
+    val id: Long
 )

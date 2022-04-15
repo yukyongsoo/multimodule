@@ -19,4 +19,4 @@ internal class CustomerRepository(
     }
 }
 
-internal interface CustomerJpaRepository : JpaRepository<Customer, CustomerId>
+internal interface CustomerJpaRepository : JpaRepository<Customer, Long>

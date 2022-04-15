@@ -1,28 +1,26 @@
 package com.yuk.repository.review
 
-import com.yuk.domain.book.ChapterId
 import com.yuk.domain.review.Review
 import com.yuk.domain.review.ReviewId
 import com.yuk.domain.review.Reviews
 import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
-internal class ReviewRepository : Reviews {
+internal class ReviewRepository(
+    private val reviewJpaRepository: ReviewJpaRepository
+) : Reviews {
     override fun getReviews(): List<Review> {
-        TODO("Not yet implemented")
-    }
-
-    override fun findAllByChapterId(chapterId: ChapterId): List<Review> {
-        TODO("Not yet implemented")
+        return reviewJpaRepository.findAll()
     }
 
     override fun findById(reviewId: ReviewId): Review? {
-        TODO("Not yet implemented")
+        return reviewJpaRepository.findByIdOrNull(reviewId.id)
     }
 
     override fun addReview(review: Review) {
-        TODO("Not yet implemented")
+        reviewJpaRepository.save(review)
     }
 }
 

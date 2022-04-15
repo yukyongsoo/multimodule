@@ -13,10 +13,8 @@ class Comment(
     @Column(nullable = false)
     val content: String
 ) {
-    @delegate:Transient
-    val commentId by lazy {
-        CommentId(id)
-    }
+    val commentId
+        get() = CommentId(id)
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,4 +31,19 @@ class Comment(
 
 class CommentId(
     val id: Long
-)
+) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as CommentId
+
+        if (id != other.id) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return id.hashCode()
+    }
+}

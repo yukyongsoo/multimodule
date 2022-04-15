@@ -4,6 +4,7 @@ import com.yuk.domain.purchase.Product
 import javax.persistence.Column
 import javax.persistence.DiscriminatorColumn
 import javax.persistence.Entity
+import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
@@ -13,10 +14,8 @@ import javax.persistence.OneToOne
 @Entity
 @DiscriminatorColumn(name = "type", columnDefinition = "TINYINT")
 abstract class Book {
-    @delegate:Transient
-    val bookId by lazy {
-        BookId(id)
-    }
+    val bookId
+        get() = BookId(id)
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +28,7 @@ abstract class Book {
     @OneToMany(mappedBy = "book")
     val chapters = mutableListOf<Chapter>()
 
-    @OneToOne(optional = true, mappedBy = "book")
+    @OneToOne(optional = true, mappedBy = "book", fetch = FetchType.LAZY)
     var product: Product? = null
         get() = field ?: throw IllegalAccessException("book not sale")
         protected set
@@ -50,4 +49,19 @@ abstract class Book {
 
 class BookId(
     val id: Long
-)
+) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as BookId
+
+        if (id != other.id) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return id.hashCode()
+    }
+}

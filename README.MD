@@ -2,22 +2,24 @@
 
 참고 사이트: https://nealford.com/katas/list.html
 
-# Agile Dead Trees(이하 ADT)
+# Make the Grade
 
-A publisher wants to unify its authoring Content Management System (CMS) and customer store experience, trying to get books published to customers as quickly as possible.
+A very large and populous state would like a new system to support standardized testing across all public school systems grades 3-12.
 
-Users: dozens of publisher employees, hundreds of authors, thousands/millions of customers
+Users
 
-Requirements:  
-1. authors publish chapters  
-2. reviewers see the chapters, make review comments, and notify authors on review  
-3. authors can reject proposed review changes  
-4. supports both copy and technical editing  
-5. customers can buy books (either e- form or dead trees form) online, including those available in 'beta'  
-6. publisher can push authors' chapters to those customers who bought the 'beta'  
+40,000+ students, 2000 graders, 50 administrators.
 
-Additional Context:  
-1. The business is driven to this decision because competitors have a similar offering.  
-2. Competition for authors is tight.  
-3. This is part of a long-term strategy to modernize the publishing aspects of the business.  
-4. Information needed to publish a book (distribution, royalties, marketing) comes from several disparate systems, ranging from emailed Excel spreadsheets to mainframe integration with the printing facility.  
+Requirements
+
+1. Students will only be able to use the application within testing centers around the state, most of these will be in the schools, but not all of them  
+2. Students should be able to take a test, and the results eventually consolidated to a single location representing all of the test scores across the state (by school, teacher, and student).  
+3. Tests will be multiple choice, short answer, and essay.  
+4. The system should have a reporting system to know which students have taken the tests and what score they received.  
+5. Short answer and essay questions will be manually graded by teachers, who will then add the essay grades to the system.
+
+Additional Context
+
+1. A change approval processes involving three different government agencies is required for changes to the way student grades are kept to ensure security.
+2. The state does not own its hosting center, but outsources it to a third party.
+3. Project must defend its budget each fiscal year.

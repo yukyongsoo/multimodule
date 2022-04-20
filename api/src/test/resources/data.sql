@@ -1,12 +1,20 @@
-insert into customer(id) values (1);
+insert into teacher
+values (1);
 
-insert into book(id, type, beta) values (1, 1, false);
+insert into student
+values (1);
 
-insert into author(id) values (1);
+insert into location
+values (1, 'A', 'B');
 
-insert into chapter(id, content, author_id) values (1,'asdf', 1);
+insert into test
+values (1);
 
-insert into product(id, book_id) values (1, 1);
+insert into problem
+values (1, 1, 1);
 
--- insert into purchased_product(id, customer_id, product_id) values (1, 1, 1);
+insert into submit_test
+values ( 1, 1, 1, 1 );
 
+insert into submit_answer
+values ( 1, 0, 1, 1 );

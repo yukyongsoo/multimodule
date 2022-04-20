@@ -1,5 +1,6 @@
 package com.yuk.domain.testpaper
 
+import javax.persistence.CascadeType
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -15,7 +16,7 @@ class Test {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private val id = 0L
 
-    @OneToMany(mappedBy = "test")
+    @OneToMany(mappedBy = "test", cascade = [CascadeType.ALL])
     val problemList = mutableListOf<Problem>()
 }
 

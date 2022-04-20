@@ -1,3 +1,6 @@
 package com.yuk.domain.test
 
-interface SubmitTests
+interface SubmitTests {
+    fun findById(submitTestId: SubmitTestId): SubmitTest?
+    fun save(submitTest: SubmitTest)
+}

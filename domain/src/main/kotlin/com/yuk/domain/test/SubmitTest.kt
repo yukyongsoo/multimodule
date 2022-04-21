@@ -1,6 +1,7 @@
 package com.yuk.domain.test
 
 import com.yuk.domain.testpaper.Test
+import javax.persistence.CascadeType
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -24,11 +25,15 @@ class SubmitTest(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private val id = 0L
 
-    @OneToMany(mappedBy = "submitTest")
+    @OneToMany(mappedBy = "submitTest", cascade = [CascadeType.ALL])
     val submitAnswers = mutableListOf<SubmitAnswer>()
 
     fun findSubmitAnswer(submitAnswerId: SubmitAnswerId): SubmitAnswer? {
         return submitAnswers.find { it.submitAnswerId == submitAnswerId }
+    }
+
+    fun addAnswers(submitAnswers: Collection<SubmitAnswer>) {
+        this.submitAnswers.addAll(submitAnswers)
     }
 }
 

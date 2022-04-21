@@ -8,10 +8,10 @@ import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
-class SubmitTestRepository(
+internal class SubmitTestRepository(
     private val submitTestJpaRepository: SubmitTestJpaRepository
 ) : SubmitTests {
-    override fun save(submitTest: SubmitTest) {
+    override fun submit(submitTest: SubmitTest) {
         submitTestJpaRepository.save(submitTest)
     }
 
@@ -20,4 +20,4 @@ class SubmitTestRepository(
     }
 }
 
-interface SubmitTestJpaRepository : JpaRepository<SubmitTest, Long>
+internal interface SubmitTestJpaRepository : JpaRepository<SubmitTest, Long>

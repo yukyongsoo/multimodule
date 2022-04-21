@@ -8,7 +8,7 @@ import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
-class TeacherRepository(
+internal class TeacherRepository(
     private val teacherJpaRepository: TeacherJpaRepository
 ) : Teachers {
     override fun findById(teacherId: TeacherId): Teacher? {
@@ -20,4 +20,4 @@ class TeacherRepository(
     }
 }
 
-interface TeacherJpaRepository : JpaRepository<Teacher, Long>
+internal interface TeacherJpaRepository : JpaRepository<Teacher, Long>

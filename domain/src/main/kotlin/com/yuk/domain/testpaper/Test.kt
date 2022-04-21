@@ -18,6 +18,16 @@ class Test {
 
     @OneToMany(mappedBy = "test", cascade = [CascadeType.ALL])
     val problemList = mutableListOf<Problem>()
+
+    fun findProblems(problemIds: Collection<ProblemId>): List<Problem> {
+        val problems = problemList.filter { problemIds.contains(it.problemId) }
+
+        if (problems.size != problemIds.size) {
+            throw IllegalArgumentException("problemIds is not exist")
+        }
+
+        return problems
+    }
 }
 
 class TestId(

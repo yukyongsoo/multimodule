@@ -2,22 +2,26 @@
 
 참고 사이트: https://nealford.com/katas/list.html
 
-# Agile Dead Trees(이하 ADT)
+# Going...Going...Gone!
 
-A publisher wants to unify its authoring Content Management System (CMS) and customer store experience, trying to get books published to customers as quickly as possible.
+An auction company wants to take their auctions online to a nationwide scale--customers choose the auction to participate in, wait until the auction begins, then bid as if they were there in the room, with the auctioneer
 
-Users: dozens of publisher employees, hundreds of authors, thousands/millions of customers
+Users:  
 
-Requirements:  
-1. authors publish chapters  
-2. reviewers see the chapters, make review comments, and notify authors on review  
-3. authors can reject proposed review changes  
-4. supports both copy and technical editing  
-5. customers can buy books (either e- form or dead trees form) online, including those available in 'beta'  
-6. publisher can push authors' chapters to those customers who bought the 'beta'  
+scale up to hundreds of participants (per auction), potentially up to thousands of participants, and as many simultaneous auctions as possible  
+
+Requirements:
+
+1. auctions must be categorized and 'discoverable'
+2. auctions must be as real-time as possible
+3. auctions must be mixed live and online
+4. video stream of the action after the fact
+5. handle money exchange
+6. participants must be tracked via a reputation index
 
 Additional Context:  
-1. The business is driven to this decision because competitors have a similar offering.  
-2. Competition for authors is tight.  
-3. This is part of a long-term strategy to modernize the publishing aspects of the business.  
-4. Information needed to publish a book (distribution, royalties, marketing) comes from several disparate systems, ranging from emailed Excel spreadsheets to mainframe integration with the printing facility.  
+
+1. auction company is expanding aggressively by merging with smaller competitors
+2. if nationwide auction is a success, replicate the model overseas
+3. budget is not constrained--this is a strategic direction
+4. company just exited a lawsuit where they settled a suit alleging fraud

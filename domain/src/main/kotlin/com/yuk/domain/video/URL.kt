@@ -1,4 +1,4 @@
-package com.yuk.domain.vidio
+package com.yuk.domain.video
 
 import javax.persistence.Column
 import javax.persistence.Embeddable

@@ -1,4 +1,4 @@
-package com.yuk.domain.vidio
+package com.yuk.domain.video
 
 import com.yuk.domain.auction.Auction
 import com.yuk.domain.auction.AuctionId
@@ -9,7 +9,7 @@ import javax.persistence.Id
 import javax.persistence.OneToOne
 
 @Entity
-class Vidio(
+class Video(
     @Transient
     val auctionId: AuctionId
 ) {

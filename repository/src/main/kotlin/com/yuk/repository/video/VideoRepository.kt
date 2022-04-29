@@ -8,6 +8,6 @@ import org.springframework.stereotype.Service
 @Service
 internal class VideoRepository(
     private val videoJPARepository: VideoJPARepository
-): Videos {}
+) : Videos
 
-internal interface VideoJPARepository: JpaRepository<Video, Long> {}
+internal interface VideoJPARepository : JpaRepository<Video, Long>

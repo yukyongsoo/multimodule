@@ -24,10 +24,8 @@ class Video(
         protected set
 
     fun recoding() {
-
     }
 
     fun stopRecoding() {
-
     }
 }

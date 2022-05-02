@@ -6,6 +6,8 @@ import javax.persistence.Embedded
 import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.Id
+import javax.persistence.JoinColumn
+import javax.persistence.MapsId
 import javax.persistence.OneToOne
 
 @Entity
@@ -16,7 +18,9 @@ class Video(
     @Id
     private var id = auctionId.id
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
+    @OneToOne(mappedBy = "video", fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
     val auction: Auction = Auction()
 
     @Embedded

@@ -13,4 +13,8 @@ class Exchange(
 ) {
     @Id
     private val id = 0
+
+    fun convert(money: Money): Money {
+        return Money((money.amount * rate).toLong(), to)
+    }
 }

@@ -1,3 +1,8 @@
 package com.yuk.domain.video
 
-interface Videos
+import com.yuk.domain.auction.AuctionId
+
+interface Videos {
+    fun save(video: Video)
+    fun findById(auctionId: AuctionId): Video?
+}

@@ -23,14 +23,15 @@ class AuctionService(
     fun bid(auctionId: AuctionId, participantId: ParticipantId, money: Money) {
         val participant = participantService.getParticipants(participantId)
 
+        while (!auctionQueue.empty(auctionId)) { }
+
         val auction = auctions.findById(auctionId)
             ?: throw IllegalArgumentException("Auction not found")
 
+        val bid = Bid(money, participant)
+        auction.addBid(bid)
 
-
-        //auctionQueue.add(bid(auctionId, money))
-        //Bid(money, participant)
-        //auctionQueue.add(bid(auctionId, money))
+        auctionQueue.add(bid)
     }
 
 

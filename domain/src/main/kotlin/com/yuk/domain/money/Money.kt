@@ -11,6 +11,10 @@ class Money(
     @Embedded
     val currency: Currency
 ) {
+    operator fun compareTo(money: Money): Int {
+        return amount.compareTo(money.amount)
+    }
+
     companion object {
         val ZERO = Money(0, Currency("USD"))
     }

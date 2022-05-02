@@ -44,6 +44,10 @@ class Auction {
     private val participants = mutableSetOf<Participant>()
 
     fun addBid(bid: Bid) {
+        if (maxPrice < bid.money) {
+            maxPrice = bid.money
+        }
+
         bids.add(bid)
         bid.auction = this
         participants.add(bid.participant)

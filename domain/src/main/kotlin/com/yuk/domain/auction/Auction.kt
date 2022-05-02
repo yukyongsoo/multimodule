@@ -41,7 +41,7 @@ class Auction {
     val video = Video(auctionId)
 
     @Transient
-    private val participants = mutableListOf<Participant>()
+    private val participants = mutableSetOf<Participant>()
 
     fun addBid(bid: Bid) {
         bids.add(bid)

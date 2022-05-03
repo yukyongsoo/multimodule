@@ -6,6 +6,8 @@ import com.yuk.domain.auction.Auctions
 import com.yuk.domain.auction.Bid
 import com.yuk.domain.money.Money
 import com.yuk.domain.participant.ParticipantId
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -23,15 +25,20 @@ class AuctionService(
     fun bid(auctionId: AuctionId, participantId: ParticipantId, money: Money) {
         val participant = participantService.getParticipants(participantId)
 
-        while (!auctionQueue.empty(auctionId)) { }
+        runBlocking {
+            while (!auctionQueue.empty(auctionId)) {
+                delay(1000)
+            }
+        }
+
+        val bid = Bid(money, participant)
+        auctionQueue.add(bid)
 
         val auction = auctions.findById(auctionId)
             ?: throw IllegalArgumentException("Auction not found")
-
-        val bid = Bid(money, participant)
         auction.addBid(bid)
 
-        auctionQueue.add(bid)
+        auctionQueue.remove(auctionId)
     }
 
 

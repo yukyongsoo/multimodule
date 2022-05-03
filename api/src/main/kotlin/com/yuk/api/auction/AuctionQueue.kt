@@ -7,4 +7,6 @@ interface AuctionQueue {
     fun start(auctionId: AuctionId)
     fun add(bid: Bid)
     fun empty(auctionId: AuctionId): Boolean
+
+    fun remove(auctionId: AuctionId)
 }

@@ -22,4 +22,9 @@ class MemoryAuctionQueue : AuctionQueue {
         return queue[auctionId]?.isEmpty()
             ?: throw IllegalStateException("Auction $auctionId is not started")
     }
+
+    override fun remove(auctionId: AuctionId) {
+        queue[auctionId]?.removeFirst()
+            ?: throw IllegalStateException("Auction $auctionId is not started")
+    }
 }
